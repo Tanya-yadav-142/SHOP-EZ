@@ -1,3 +1,4 @@
+import { imageURL } from "../../../config/config";
 import React, { Fragment, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import Layout from "../layout";
@@ -60,7 +61,9 @@ const AllProduct = ({ products }) => {
                   <img
                     onClick={(e) => history.push(`/products/${item._id}`)}
                     className="w-full object-cover object-center cursor-pointer"
-                    src={`${apiURL}/uploads/products/${item.pImages[0]}`}
+                    
+                    src={imageURL(item.pImages[0], "products")}
+
                     alt=""
                   />
                   <div className="flex items-center justify-between mt-2">

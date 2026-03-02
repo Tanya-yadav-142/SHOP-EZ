@@ -87449,3 +87449,8 @@ video {
             animation: bounce 1s infinite;
   }
 }
+
+
+.braintree-dropin {
+  pointer-events: auto;
+}

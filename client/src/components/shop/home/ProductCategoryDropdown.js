@@ -1,3 +1,4 @@
+import { imageURL } from "../../../config/config";
 import React, { Fragment, useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { HomeContext } from "./index";
@@ -39,10 +40,12 @@ const CategoryList = () => {
                   onClick={(e) =>
                     history.push(`/products/category/${item._id}`)
                   }
+                  
                   className="col-span-1 m-2 flex flex-col items-center justify-center space-y-2 cursor-pointer"
                 >
                   <img
-                    src={`${apiURL}/uploads/categories/${item.cImage}`}
+                    src={imageURL(item.cImage, "categories")}
+            
                     alt="pic"
                   />
                   <div className="font-medium">{item.cName}</div>

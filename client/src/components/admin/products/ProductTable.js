@@ -1,3 +1,4 @@
+import { imageURL } from "../../../config/config";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { getAllProduct, deleteProduct } from "./FetchApi";
 import moment from "moment";
@@ -133,13 +134,14 @@ const ProductTable = ({ product, deleteProduct, editProduct }) => {
             ? product.pDescription.substring(1, 15) + "..."
             : product.pName}
         </td>
+
         <td className="p-2 text-left">
           {product.pDescription.slice(0, 15)}...
         </td>
         <td className="p-2 text-center">
           <img
             className="w-12 h-12 object-cover object-center"
-            src={`${apiURL}/uploads/products/${product.pImages[0]}`}
+            src={imageURL(product.pImages[0], "products")}
             alt="pic"
           />
         </td>

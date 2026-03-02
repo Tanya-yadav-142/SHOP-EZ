@@ -1,3 +1,4 @@
+import { imageURL } from "../../../config/config";
 import React, { Fragment, useEffect, useContext } from "react";
 import moment from "moment";
 import { fetchOrderByUser } from "./Action";
@@ -34,7 +35,8 @@ const TableBody = ({ order }) => {
               <span className="block flex items-center space-x-2" key={i}>
                 <img
                   className="w-8 h-8 object-cover object-center"
-                  src={`${apiURL}/uploads/products/${product.id.pImages[0]}`}
+                  
+                  src={imageURL(product.id.pImages[0], "products")}
                   alt="productImage"
                 />
                 <span>{product.id.pName}</span>

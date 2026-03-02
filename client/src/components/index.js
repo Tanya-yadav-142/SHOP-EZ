@@ -3,15 +3,14 @@ import {
   Home,
   WishList,
   ProtectedRoute,
-  AdminProtectedRoute,
   CartProtectedRoute,
   PageNotFound,
   ProductDetails,
   ProductByCategory,
   CheckoutPage,
+  OrderConfirmation,
 } from "./shop";
-import { DashboardAdmin, Categories, Products, Orders } from "./admin";
-import { UserProfile, UserOrders, SettingUser } from "./shop/dashboardUser";
+import { UserProfile } from "./shop/dashboardUser";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -34,46 +33,14 @@ const Routes = (props) => {
           path="/checkout"
           component={CheckoutPage}
         />
+        <Route exact path="/order-confirmation" component={OrderConfirmation} />
         {/* Shop & Public Routes End */}
-
-        {/* Admin Routes */}
-        <AdminProtectedRoute
-          exact={true}
-          path="/admin/dashboard"
-          component={DashboardAdmin}
-        />
-        <AdminProtectedRoute
-          exact={true}
-          path="/admin/dashboard/categories"
-          component={Categories}
-        />
-        <AdminProtectedRoute
-          exact={true}
-          path="/admin/dashboard/products"
-          component={Products}
-        />
-        <AdminProtectedRoute
-          exact={true}
-          path="/admin/dashboard/orders"
-          component={Orders}
-        />
-        {/* Admin Routes End */}
 
         {/* User Dashboard */}
         <ProtectedRoute
           exact={true}
           path="/user/profile"
           component={UserProfile}
-        />
-        <ProtectedRoute
-          exact={true}
-          path="/user/orders"
-          component={UserOrders}
-        />
-        <ProtectedRoute
-          exact={true}
-          path="/user/setting"
-          component={SettingUser}
         />
         {/* User Dashboard End */}
 

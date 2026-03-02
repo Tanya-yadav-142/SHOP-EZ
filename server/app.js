@@ -16,19 +16,41 @@ go user model and see the role field.
 
 */
 
+
+
+
+
+
 const express = require("express");
 const app = express();
 require("dotenv").config();
-const mongoose = require("mongoose");
+
+// try{
+//   const path = require("path");
+
+// // allow browser to access uploaded images
+//    app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
+// }catch(err){
+//   console.log("This ia causing error"+err);
+// }
+
+const path = require("path");
+
+// allow browser to access uploaded images
+   app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
+
+   
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+
+
 
 // Import Router
 const authRouter = require("./routes/auth");
 const categoryRouter = require("./routes/categories");
 const productRouter = require("./routes/products");
-const brainTreeRouter = require("./routes/braintree");
+
 const orderRouter = require("./routes/orders");
 const usersRouter = require("./routes/users");
 const customizeRouter = require("./routes/customize");
@@ -39,19 +61,13 @@ const CreateAllFolder = require("./config/uploadFolderCreateScript");
 /* Create All Uploads Folder if not exists | For Uploading Images */
 CreateAllFolder();
 
+
+
 // Database Connection
-mongoose
-  .connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  })
-  .then(() =>
-    console.log(
-      "==============Mongodb Database Connected Successfully=============="
-    )
-  )
-  .catch((err) => console.log("Database Not Connected !!!"));
+const connectDB = require("./config/db");
+
+// DB connection
+connectDB();
 
 // Middleware
 app.use(morgan("dev"));
@@ -60,15 +76,29 @@ app.use(cors());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use("/api/order", require("./routes/orders"));
 
 // Routes
 app.use("/api", authRouter);
 app.use("/api/user", usersRouter);
 app.use("/api/category", categoryRouter);
 app.use("/api/product", productRouter);
-app.use("/api", brainTreeRouter);
+
+
+
+
+
+
+
 app.use("/api/order", orderRouter);
+
 app.use("/api/customize", customizeRouter);
+
+
+
+
+
+
 
 // Run Server
 const PORT = process.env.PORT || 8000;

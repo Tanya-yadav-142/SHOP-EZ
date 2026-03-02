@@ -1,3 +1,4 @@
+import { imageURL } from "../../../config/config";
 import React, { Fragment, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import moment from "moment";
@@ -100,7 +101,7 @@ const TodayOrderTable = ({ order }) => {
               <img
                 key={index}
                 className="w-12 h-12 object-cover"
-                src={`${apiURL}/uploads/products/${item.id.pImages[0]}`}
+                src={imageURL(item.id.pImages[0], "products")}
                 alt="Pic"
               />
             );

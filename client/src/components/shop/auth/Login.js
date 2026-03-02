@@ -35,10 +35,10 @@ const Login = (props) => {
       } else if (responseData.token) {
         setData({ email: "", password: "", loading: false, error: false });
         localStorage.setItem("jwt", JSON.stringify(responseData));
-       enqueueSnackbar('Login Completed Successfully..!', { variant: 'success' })
+        enqueueSnackbar('Login Completed Successfully..!', { variant: 'success' })
         window.location.href = "/";
 
-      }    
+      }
     } catch (error) {
       console.log(error);
     }
@@ -57,7 +57,7 @@ const Login = (props) => {
       <form className="space-y-4">
         <div className="flex flex-col">
           <label htmlFor="name">
-            Username or email address
+            Email
             <span className="text-sm text-gray-600 ml-1">*</span>
           </label>
           <input
@@ -68,9 +68,8 @@ const Login = (props) => {
             value={data.email}
             type="text"
             id="name"
-            className={`${
-              !data.error ? "" : "border-red-500"
-            } px-4 py-2 focus:outline-none border`}
+            className={`${!data.error ? "" : "border-red-500"
+              } px-4 py-2 focus:outline-none border`}
           />
           {!data.error ? "" : alert(data.error)}
         </div>
@@ -86,9 +85,8 @@ const Login = (props) => {
             value={data.password}
             type="password"
             id="password"
-            className={`${
-              !data.error ? "" : "border-red-500"
-            } px-4 py-2 focus:outline-none border`}
+            className={`${!data.error ? "" : "border-red-500"
+              } px-4 py-2 focus:outline-none border`}
           />
           {!data.error ? "" : alert(data.error)}
         </div>

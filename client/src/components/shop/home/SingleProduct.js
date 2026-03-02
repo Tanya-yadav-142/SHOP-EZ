@@ -1,3 +1,4 @@
+import { imageURL } from "../../../config/config";
 import React, { Fragment, useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { getAllProduct } from "../../admin/products/FetchApi";
@@ -66,7 +67,8 @@ const SingleProduct = (props) => {
                 <img
                   onClick={(e) => history.push(`/products/${item._id}`)}
                   className="w-full object-cover object-center cursor-pointer"
-                  src={`${apiURL}/uploads/products/${item.pImages[0]}`}
+                  src={imageURL(item.pImages[0], "products")}
+
                   alt=""
                 />
                 <div className="flex items-center justify-between mt-2">

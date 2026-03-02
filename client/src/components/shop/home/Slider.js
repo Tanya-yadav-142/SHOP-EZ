@@ -1,3 +1,4 @@
+import { imageURL } from "../../../config/config";
 import React, { Fragment, useEffect, useContext, useState } from "react";
 import OrderSuccessMessage from "./OrderSuccessMessage";
 import { HomeContext } from "./";
@@ -15,13 +16,15 @@ const Slider = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+
   return (
     <Fragment>
       <div className="relative mt-16 bg-gray-100 border-2">
         {data.sliderImages.length > 0 ? (
           <img
             className="w-full"
-            src={`${apiURL}/uploads/customize/${data.sliderImages[slide].slideImage}`}
+            src={imageURL(data.sliderImages[slide].slideImage, "customize")}
+            
             alt="sliderImage"
           />
         ) : (

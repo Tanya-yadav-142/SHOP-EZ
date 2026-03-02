@@ -1,7 +1,9 @@
+import { imageURL } from "../../../config/config";
 import React, { Fragment, useContext, useEffect } from "react";
 import { getAllCategory, deleteCategory } from "./FetchApi";
 import { CategoryContext } from "./index";
 import moment from "moment";
+
 
 const apiURL = process.env.REACT_APP_API_URL;
 
@@ -137,8 +139,10 @@ const CategoryTable = ({ category, deleteCat, editCat }) => {
         </td>
         <td className="p-2 text-center">
           <img
+
             className="w-12 h-12 object-cover object-center"
-            src={`${apiURL}/uploads/categories/${category.cImage}`}
+            src={imageURL(category.cImage, "categories")}
+            
             alt=""
           />
         </td>

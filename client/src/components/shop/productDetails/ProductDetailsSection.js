@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
+import { imageURL } from "../../../config/config";
 import { useParams } from "react-router-dom";
 import { ProductDetailsContext } from "./index";
 import { LayoutContext } from "../layout";
@@ -113,7 +114,7 @@ const ProductDetailsSection = (props) => {
               className={`${
                 count === 0 ? "" : "opacity-25"
               } cursor-pointer w-20 h-20 object-cover object-center`}
-              src={`${apiURL}/uploads/products/${sProduct.pImages[0]}`}
+              src={imageURL(sProduct.pImages[0], "products")}
               alt="pic"
             />
             <img
@@ -123,7 +124,7 @@ const ProductDetailsSection = (props) => {
               className={`${
                 count === 1 ? "" : "opacity-25"
               } cursor-pointer w-20 h-20 object-cover object-center`}
-              src={`${apiURL}/uploads/products/${sProduct.pImages[1]}`}
+              src={imageURL(sProduct.pImages[1], "products")}
               alt="pic"
             />
           </div>
@@ -131,7 +132,8 @@ const ProductDetailsSection = (props) => {
             <div className="relative">
               <img
                 className="w-full"
-                src={`${apiURL}/uploads/products/${sProduct.pImages[count]}`}
+                
+                src={imageURL(sProduct.pImages[count], "products")}
                 alt="Pic"
               />
               <div className="absolute inset-0 flex justify-between items-center mb-4">

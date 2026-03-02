@@ -1,8 +1,10 @@
+import { imageURL } from "../../../config/config";
 import React, { Fragment, useContext, useEffect } from "react";
 import { DashboardContext } from "./";
 import { uploadImage, sliderImages, deleteImage } from "./Action";
 
 const apiURL = process.env.REACT_APP_API_URL;
+
 
 const Customize = () => {
   const { data, dispatch } = useContext(DashboardContext);
@@ -152,6 +154,7 @@ const AllImages = () => {
       ) : (
         ""
       )}
+
       <div className="grid grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-3 my-4">
         {data.sliderImages.length > 0 ? (
           data.sliderImages.map((item, index) => {
@@ -159,7 +162,8 @@ const AllImages = () => {
               <div key={index} className="relative col-span-1 m-2 border">
                 <img
                   className="w-full md:h-32 object-center object-cover"
-                  src={`${apiURL}/uploads/customize/${item.slideImage}`}
+                  src={imageURL(item.slideImage, "customize")}
+                  
                   alt="sliderImages"
                 />
                 <span

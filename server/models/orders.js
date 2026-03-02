@@ -5,45 +5,62 @@ const orderSchema = new mongoose.Schema(
   {
     allProduct: [
       {
-        id: { type: ObjectId, ref: "products" },
-        quantitiy: Number,
+        id: {
+          type: ObjectId,
+          ref: "products",
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+          default: 1,
+        },
       },
     ],
+
+    completedAt: {
+      type: Date,
+      default: null,
+    },
+
     user: {
       type: ObjectId,
       ref: "users",
       required: true,
     },
+
     amount: {
       type: Number,
       required: true,
     },
+
     transactionId: {
       type: String,
       required: true,
     },
+
     address: {
       type: String,
       required: true,
     },
+
     phone: {
-      type: Number,
+      type: String,
       required: true,
     },
+
+    paymentMethod: {
+      type: String,
+      default: "COD",
+    },
+
     status: {
       type: String,
-      default: "Not processed",
-      enum: [
-        "Not processed",
-        "Processing",
-        "Shipped",
-        "Delivered",
-        "Cancelled",
-      ],
+      enum: ["pending", "processing", "shipped", "delivered"],
+      default: "pending",
     },
   },
   { timestamps: true }
 );
 
-const orderModel = mongoose.model("orders", orderSchema);
-module.exports = orderModel;
+module.exports = mongoose.model("orders", orderSchema);
