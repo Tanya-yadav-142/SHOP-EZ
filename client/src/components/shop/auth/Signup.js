@@ -34,11 +34,22 @@ const Signup = (props) => {
         password: data.password,
         cPassword: data.cPassword,
       });
+      if (!responseData) {
+        return setData({
+          ...data,
+          loading: false,
+          error: { general: "Something went wrong. Please try again." },
+        });
+      }
       if (responseData.error) {
+        // Server returns error as a string, convert to object for display
+        const errorObj = typeof responseData.error === "string"
+          ? { general: responseData.error }
+          : responseData.error;
         setData({
           ...data,
           loading: false,
-          error: responseData.error,
+          error: errorObj,
           password: "",
           cPassword: "",
         });
@@ -64,6 +75,7 @@ const Signup = (props) => {
       <div className="text-center text-2xl mb-6">Register</div>
       <form className="space-y-4">
         {data.success ? alert(data.success, "green") : ""}
+        {data.error && data.error.general ? alert(data.error.general, "red") : ""}
         <div className="flex flex-col">
           <label htmlFor="name">
             Name<span className="text-sm text-gray-600 ml-1">*</span>
@@ -73,16 +85,15 @@ const Signup = (props) => {
               setData({
                 ...data,
                 success: false,
-                error: {},
+                error: false,
                 name: e.target.value,
               })
             }
             value={data.name}
             type="text"
             id="name"
-            className={`${
-              data.error.name ? "border-red-500" : ""
-            } px-4 py-2 focus:outline-none border`}
+            className={`${data.error.name ? "border-red-500" : ""
+              } px-4 py-2 focus:outline-none border`}
           />
           {!data.error ? "" : alert(data.error.name, "red")}
         </div>
@@ -95,16 +106,15 @@ const Signup = (props) => {
               setData({
                 ...data,
                 success: false,
-                error: {},
+                error: false,
                 email: e.target.value,
               })
             }
             value={data.email}
             type="email"
             id="email"
-            className={`${
-              data.error.email ? "border-red-500" : ""
-            } px-4 py-2 focus:outline-none border`}
+            className={`${data.error.email ? "border-red-500" : ""
+              } px-4 py-2 focus:outline-none border`}
           />
           {!data.error ? "" : alert(data.error.email, "red")}
         </div>
@@ -117,16 +127,15 @@ const Signup = (props) => {
               setData({
                 ...data,
                 success: false,
-                error: {},
+                error: false,
                 password: e.target.value,
               })
             }
             value={data.password}
             type="password"
             id="password"
-            className={`${
-              data.error.password ? "border-red-500" : ""
-            } px-4 py-2 focus:outline-none border`}
+            className={`${data.error.password ? "border-red-500" : ""
+              } px-4 py-2 focus:outline-none border`}
           />
           {!data.error ? "" : alert(data.error.password, "red")}
         </div>
@@ -140,16 +149,15 @@ const Signup = (props) => {
               setData({
                 ...data,
                 success: false,
-                error: {},
+                error: false,
                 cPassword: e.target.value,
               })
             }
             value={data.cPassword}
             type="password"
             id="cPassword"
-            className={`${
-              data.error.cPassword ? "border-red-500" : ""
-            } px-4 py-2 focus:outline-none border`}
+            className={`${data.error.cPassword ? "border-red-500" : ""
+              } px-4 py-2 focus:outline-none border`}
           />
           {!data.error ? "" : alert(data.error.cPassword, "red")}
         </div>

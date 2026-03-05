@@ -4,11 +4,11 @@ require("dotenv").config();
 const Product = require("./models/products");
 const Category = require("./models/categories");
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/shop";
+const MONGO_URI = process.env.MONGO_URI;
 
 /* ================= CONNECT DB ================= */
 mongoose.connect(MONGO_URI)
-  .then(() => console.log("MongoDB Connected"))
+  .then(() => console.log("MongoDB atlas Connected"))
   .catch(err => console.log(err));
 
 /* ================= CATEGORY DATA ================= */

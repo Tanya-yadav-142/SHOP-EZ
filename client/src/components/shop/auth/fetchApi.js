@@ -16,8 +16,10 @@ export const loginReq = async ({ email, password }) => {
     return res.data;
   } catch (error) {
     console.log(error);
+    return { error: "Failed to connect to server. Please try again." };
   }
 };
+
 
 export const signupReq = async ({ name, email, password, cPassword }) => {
   const data = { name, email, password, cPassword };
@@ -26,5 +28,6 @@ export const signupReq = async ({ name, email, password, cPassword }) => {
     return res.data;
   } catch (error) {
     console.log(error);
+    return { error: "Failed to connect to server. Please try again." };
   }
 };
