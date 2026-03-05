@@ -5,7 +5,7 @@ import { HomeContext } from "./";
 import { sliderImages } from "../../admin/dashboardAdmin/Action";
 import { prevSlide, nextSlide } from "./Mixins";
 
-const apiURL = process.env.REACT_APP_API_URL;
+import { apiURL } from "../../../config/config";
 
 const Slider = (props) => {
   const { data, dispatch } = useContext(HomeContext);

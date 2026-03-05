@@ -5,7 +5,7 @@ import { getAllProduct } from "../../admin/products/FetchApi";
 import { HomeContext } from "./index";
 import { isWishReq, unWishReq, isWish } from "./Mixins";
 
-const apiURL = process.env.REACT_APP_API_URL;
+import { apiURL } from "../../../config/config";
 
 const SingleProduct = (props) => {
   const { data, dispatch } = useContext(HomeContext);

@@ -5,7 +5,7 @@ import moment from "moment";
 import { OrderContext } from "./index";
 import { fetchData, editOrderReq, deleteOrderReq } from "./Actions";
 
-const apiURL = process.env.REACT_APP_API_URL;
+import { apiURL } from "../../../config/config";
 
 const AllCategory = (props) => {
   const { data, dispatch } = useContext(OrderContext);

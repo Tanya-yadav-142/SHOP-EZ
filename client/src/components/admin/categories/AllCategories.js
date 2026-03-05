@@ -5,7 +5,7 @@ import { CategoryContext } from "./index";
 import moment from "moment";
 
 
-const apiURL = process.env.REACT_APP_API_URL;
+import { apiURL } from "../../../config/config";
 
 const AllCategory = (props) => {
   const { data, dispatch } = useContext(CategoryContext);

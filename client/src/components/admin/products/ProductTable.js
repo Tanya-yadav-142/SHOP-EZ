@@ -4,7 +4,7 @@ import { getAllProduct, deleteProduct } from "./FetchApi";
 import moment from "moment";
 import { ProductContext } from "./index";
 
-const apiURL = process.env.REACT_APP_API_URL;
+import { apiURL } from "../../../config/config";
 
 const AllProduct = (props) => {
   const { data, dispatch } = useContext(ProductContext);

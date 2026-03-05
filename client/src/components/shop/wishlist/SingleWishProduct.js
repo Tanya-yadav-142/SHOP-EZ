@@ -2,7 +2,7 @@ import { imageURL } from "../../../config/config";
 import React, { Fragment, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { wishListProducts } from "./FetchApi";
-const apiURL = process.env.REACT_APP_API_URL;
+import { apiURL } from "../../../config/config";
 
 const Product = () => {
   const history = useHistory();
