@@ -1,6 +1,6 @@
 // client/src/utils/imageHelper.js
 
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = "https://shop-ez-tffy.onrender.com";
 
 export const getImage = (imgPath, type = "") => {
   if (!imgPath) return "";
